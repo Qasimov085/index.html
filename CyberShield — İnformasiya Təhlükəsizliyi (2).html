@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CyberShield — İnformasiya Təhlükəsizliyi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#e6eaee;--pn:#f8fafb;--tx:#101828;--mt:#475467;--bd:#b8c2cc;--rd:#c8102e;--ok:#0a7d4b;--hl:#ffd93b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1520;--pn:#172131;--tx:#e8edf3;--mt:#9aa8b8;--bd:#2b3a4e;--rd:#ff5a70;--ok:#3ddc97}}
+:root[data-theme="dark"]{--bg:#0e1520;--pn:#172131;--tx:#e8edf3;--mt:#9aa8b8;--bd:#2b3a4e;--rd:#ff5a70;--ok:#3ddc97}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 17px/1.6 Archivo,system-ui,sans-serif}
+a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:2px solid var(--tx);display:flex;gap:18px;align-items:center;padding:12px 20px;overflow-x:auto;white-space:nowrap}
+header b{font-weight:800;font-size:20px;margin-right:auto}
+header a{text-decoration:none;font-weight:600;font-size:15px}
+header a:hover{text-decoration:underline;text-decoration-color:var(--rd);text-decoration-thickness:3px}
+main{max-width:980px;margin:0 auto;padding:0 20px}
+section{padding:56px 0 8px}
+h1{font-weight:800;font-size:clamp(40px,9vw,88px);line-height:1;margin:0 0 24px;letter-spacing:-.03em}
+h2{font-weight:800;font-size:clamp(26px,5vw,38px);margin:0 0 6px;letter-spacing:-.02em}
+.sub{color:var(--mt);margin:0 0 24px;max-width:60ch}
+.hero{position:relative;padding-top:48px}
+.rx{background:var(--tx);color:transparent;padding:0 .12em;cursor:pointer;transition:background .5s,color .5s;user-select:none}
+.open .rx{background:var(--hl);color:#101828}
+.stamp{position:absolute;right:0;top:12px;transform:rotate(8deg);border:4px solid var(--rd);color:var(--rd);font-weight:800;font-size:22px;padding:2px 14px;letter-spacing:.08em;opacity:.9}
+button,select,input,textarea{font:inherit;color:var(--tx)}
+.btn{background:var(--tx);color:var(--bg);border:0;padding:12px 22px;font-weight:600;cursor:pointer;border-radius:3px}
+.btn:hover{background:var(--rd);color:#fff}
+.btn.alt{background:transparent;color:var(--tx);border:2px solid var(--tx)}
+:focus-visible{outline:3px solid var(--rd);outline-offset:2px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border:2px solid var(--tx)}
+.row>div{padding:20px;border-right:2px solid var(--tx);border-bottom:2px solid var(--tx);margin:0 -2px -2px 0}
+.row h3{margin:0 0 6px;font-size:20px}.row p{margin:0;color:var(--mt)}
+.panel{background:var(--pn);border:2px solid var(--tx);padding:22px}
+input[type=text],input[type=password],textarea,select{width:100%;padding:12px;background:var(--bg);border:2px solid var(--bd);border-radius:3px}
+textarea{min-height:90px;resize:vertical}
+.bar{height:12px;background:var(--bd);margin:14px 0 8px;border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--rd);transition:width .3s,background .3s}
+ul.ck{list-style:none;padding:0;margin:12px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:4px}
+ul.ck li{color:var(--mt)}ul.ck li.y{color:var(--ok);font-weight:600}
+ul.ck li::before{content:"✗ "}ul.ck li.y::before{content:"✓ "}
+.big{font-weight:800;font-size:22px}
+.gen{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.out{font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-all;background:var(--bg);border:2px dashed var(--bd);padding:12px;margin-top:12px;min-height:46px}
+.msg{border-left:6px solid var(--tx);background:var(--bg);padding:14px 16px;margin:14px 0}
+.msg small{color:var(--mt);display:block}
+.fb{margin:12px 0;padding:12px;border-left:6px solid var(--bd)}
+.fb.ok{border-color:var(--ok)}.fb.no{border-color:var(--rd)}
+.tips{padding:0;list-style:none;margin:0}
+.tips li{padding:14px 0;border-top:2px solid var(--tx)}.tips b{font-weight:800}
+footer{margin:56px 0 0;border-top:2px solid var(--tx);padding:20px;text-align:center;color:var(--mt);font-size:14px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><b>CyberShield</b><a href="#cia">Əsaslar</a><a href="#parol">Parol</a><a href="#fisinq">Fişinq</a><a href="#sifre">Şifrələmə</a><a href="#link">Link</a><a href="#tips">Qaydalar</a></header>
+<main>
+<section class="hero" id="top">
+<div class="stamp" id="stamp">MƏXFİ</div>
+<h1>Məlumatın <span class="rx">məxfidir</span>.<br>Qoru onu <span class="rx">özün</span>.</h1>
+<p class="sub">CyberShield informasiya təhlükəsizliyini oxumaq yox, sınamaq üçündür: parolunu yoxla, fişinqi tanı, mətni şifrələ.</p>
+<button class="btn" id="dec">Məxfiliyi aç</button>
+</section>
+
+<section id="cia">
+<h2>Üç əsas prinsip</h2>
+<p class="sub">İnformasiya təhlükəsizliyi hər şeydən əvvəl bu üç məqsədi qorumaqdır (CIA üçlüyü).</p>
+<div class="row">
+<div><h3>Məxfilik</h3><p>Məlumatı yalnız icazəsi olan şəxs görə bilər.</p></div>
+<div><h3>Bütövlük</h3><p>Məlumat icazəsiz dəyişdirilmir, saxtalaşdırılmır.</p></div>
+<div><h3>Əlçatanlıq</h3><p>Lazım olanda məlumata və sistemə çıxış var.</p></div>
+</div>
+</section>
+
+<section id="parol">
+<h2>Parol laboratoriyası</h2>
+<p class="sub">Parolun harada yazılır, orada qalır: heç bir yerə göndərilmir.</p>
+<div class="panel">
+<label for="pw">Parolunu yaz</label>
+<input type="password" id="pw" autocomplete="off" placeholder="məsələn: Baki2026!">
+<label><input type="checkbox" id="sh"> Parolu göstər</label>
+<div class="bar"><i id="mb"></i></div>
+<div class="big" id="lv">Parol yaz</div>
+<div id="ct" style="color:var(--mt)">Sındırılma müddəti burada görünəcək.</div>
+<ul class="ck" id="ck"></ul>
+<div class="gen">
+<label for="ln">Uzunluq: <b id="lnv">16</b></label>
+<input type="range" id="ln" min="8" max="32" value="16">
+<button class="btn" id="gn">Güclü parol yarat</button>
+<button class="btn alt" id="cp">Kopyala</button>
+</div>
+<div class="out" id="go" aria-live="polite"></div>
+</div>
+</section>
+
+<section id="fisinq">
+<h2>Fişinq detektoru</h2>
+<p class="sub">5 mesaj var. Hər biri üçün qərar ver: fişinq, yoxsa təhlükəsiz?</p>
+<div class="panel" id="qz"></div>
+</section>
+
+<section id="sifre">
+<h2>Şifrələmə studiyası</h2>
+<p class="sub">Eyni mətnin müxtəlif üsullarla necə dəyişdiyinə bax.</p>
+<div class="panel">
+<label for="md">Üsul</label>
+<select id="md"><option value="c">Sezar şifrəsi</option><option value="b">Base64 (kodlaşdırma)</option><option value="h">SHA-256 (hash)</option></select>
+<div id="shw" style="margin-top:12px"><label for="sf">Sürüşmə: <b id="sfv">3</b></label><input type="range" id="sf" min="1" max="25" value="3"></div>
+<label for="tx" style="display:block;margin-top:12px">Mətn</label>
+<textarea id="tx" placeholder="Mətni bura yaz"></textarea>
+<div class="gen"><button class="btn" id="en">Şifrələ</button><button class="btn alt" id="de">Aç</button></div>
+<div class="out" id="to" aria-live="polite"></div>
+<p class="sub" style="margin-top:12px;font-size:14px">Sezar yalnız latın hərflərini dəyişir. Base64 şifrə yox, sadəcə kodlaşdırmadır. Hash geri açılmır.</p>
+</div>
+</section>
+
+<section id="link">
+<h2>Link yoxlayıcısı</h2>
+<p class="sub">Klikləməzdən əvvəl linkin xarici əlamətlərinə bax. Link heç yerə göndərilmir.</p>
+<div class="panel">
+<label for="lu">Link</label>
+<input type="text" id="lu" placeholder="məsələn: http://bank-secure-login.xyz/verify">
+<div class="gen"><button class="btn" id="lb">Yoxla</button></div>
+<div id="lr" aria-live="polite"></div>
+</div>
+</section>
+
+<section id="tips">
+<h2>Gündəlik qaydalar</h2>
+<p class="sub">Ən çox hücum bu boşluqlardan gəlir.</p>
+<ul class="tips">
+<li><b>Hər hesaba ayrı parol.</b> Biri sızsa, qalanları təhlükəsiz qalsın. Parol meneceri istifadə et.</li>
+<li><b>İki mərhələli doğrulama.</b> Parol ələ keçsə belə, ikinci kod olmadan giriş mümkün olmur.</li>
+<li><b>Klikləməzdən əvvəl bax.</b> Göndərənin ünvanına və linkin real domeninə diqqət et.</li>
+<li><b>Yeniləmələri qoy.</b> Yeniləmələr çox vaxt məlum təhlükəsizlik boşluqlarını bağlayır.</li>
+<li><b>Açıq Wi-Fi-da ehtiyatlı ol.</b> Bank və poçt kimi vacib hesablara orada girmə.</li>
+<li><b>Ehtiyat nüsxə çıxar.</b> Fidyə proqramı və ya itkidən sonra məlumatını bərpa edə bilərsən.</li>
+</ul>
+</section>
+</main>
+<footer>CyberShield · İnformasiya Təhlükəsizliyi üzrə dərs layihəsi</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+// Hero
+$('dec').onclick=()=>{const h=document.querySelector('.hero'),o=h.classList.toggle('open');$('dec').textContent=o?'Yenidən gizlət':'Məxfiliyi aç';$('stamp').textContent=o?'AÇIQLANDI':'MƏXFİ'};
+document.querySelectorAll('.rx').forEach(e=>e.onclick=()=>$('dec').click());
+// Parol
+const rules=[['8+ simvol',p=>p.length>=8],['Böyük hərf',p=>/[A-Z]/.test(p)],['Kiçik hərf',p=>/[a-z]/.test(p)],['Rəqəm',p=>/\d/.test(p)],['Xüsusi simvol',p=>/[^A-Za-z0-9]/.test(p)]];
+const common=['123456','12345678','password','qwerty','parol','admin','111111','baku','baki','azerbaijan','123456789','abc123'];
+function fmt(s){if(s<1)return'dərhal';const u=[[31536000*100,'əsr'],[31536000,'il'],[86400,'gün'],[3600,'saat'],[60,'dəqiqə'],[1,'saniyə']];if(s>31536000*1e6)return'milyonlarla il';for(const[v,n]of u)if(s>=v)return Math.floor(s/v)+' '+n;return'dərhal'}
+function check(){const p=$('pw').value;$('ck').innerHTML=rules.map(r=>`<li class="${p&&r[1](p)?'y':''}">${r[0]}</li>`).join('');
+if(!p){$('mb').style.width='0';$('lv').textContent='Parol yaz';$('ct').textContent='Sındırılma müddəti burada görünəcək.';return}
+let pool=0;if(/[a-z]/.test(p))pool+=26;if(/[A-Z]/.test(p))pool+=26;if(/\d/.test(p))pool+=10;if(/[^A-Za-z0-9]/.test(p))pool+=33;
+let bits=p.length*Math.log2(pool);if(common.some(c=>p.toLowerCase().includes(c)))bits=Math.min(bits,20);if(/^(.)\1+$/.test(p))bits=Math.min(bits,10);
+const t=Math.pow(2,bits)/2/1e10;const s=bits<28?0:bits<40?1:bits<60?2:bits<80?3:4;
+const L=['Çox zəif','Zəif','Orta','Güclü','Çox güclü'],C=['#c8102e','#e0701a','#d4a400','#5aa02c','#0a7d4b'];
+$('mb').style.width=(s+1)*20+'%';$('mb').style.background=C[s];$('lv').textContent=L[s];
+$('ct').textContent='Sürətli oflayn hücumla təxminən sındırılma müddəti: '+fmt(t)}
+$('pw').oninput=check;check();
+$('sh').onchange=e=>$('pw').type=e.target.checked?'text':'password';
+$('ln').oninput=e=>$('lnv').textContent=e.target.value;
+$('gn').onclick=()=>{const c='abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%&*?',n=+$('ln').value,a=new Uint32Array(n);crypto.getRandomValues(a);$('go').textContent=[...a].map(x=>c[x%c.length]).join('')};
+$('cp').onclick=async()=>{const v=$('go').textContent;if(!v)return;try{await navigator.clipboard.writeText(v);$('cp').textContent='Kopyalandı'}catch(e){$('cp').textContent='Əl ilə seç'}setTimeout(()=>$('cp').textContent='Kopyala',1500)};
+// Fişinq quiz
+const Q=[
+{t:'E-poçt',f:'Bank Təhlükəsizlik Xidməti <support@bank-secure-login.xyz>',b:'Hesabınız bloklanıb! 24 saat ərzində kart məlumatlarınızı bu linkdə təsdiqləyin, əks halda hesab silinəcək.',p:1,e:'Təcili təhdid, qəribə domen (.xyz) və kart məlumatı tələbi: klassik fişinq əlamətləri.'},
+{t:'SMS',f:'+994 xx xxx xx xx',b:'Bağlamanız gəlib. Ünvanı təsdiqləmək üçün 1 AZN ödəyin: bit.ly/k8x2',p:1,e:'Qısaldılmış link və kiçik ödəniş tələbi kart məlumatını oğurlamaq üçündür.'},
+{t:'SMS',f:'Bank',b:'Giriş kodunuz: 482913. Kodu heç kimlə paylaşmayın. Siz soruşmamısınızsa, bu mesaja məhhəl qoymayın.',p:0,e:'Link yoxdur, heç nə tələb olunmur, paylaşmamaq xəbərdarlığı var: normal birdəfəlik koddur.'},
+{t:'E-poçt',f:'Müdir <mudir.sirket@gmail.com>',b:'Mən iclasdayam, zəng edə bilmirəm. Təcili 5 hədiyyə kartı al və kodları mənə göndər. Heç kimə demə.',p:1,e:'Müdir adından təcili pul/kart istəyi və məxfilik tələbi: sosial mühəndislik hiyləsidir. Şəxsi poçt ünvanına da diqqət et.'},
+{t:'E-poçt',f:'no-reply@accounts.rəsmi-sayt.az',b:'Parolunuz dəyişdirildi. Bu siz idinizsə, heç nə etməyin. Siz deyilsinizsə, tətbiqin içindən parolu sıfırlayın.',p:0,e:'Sadəcə xəbər verir, linkə basmağı tələb etmir və təhlükəsiz yol göstərir.'}];
+let qi=0,sc=0;
+function rq(){const z=$('qz');if(qi>=Q.length){const r=sc==5?'Kiber usta':sc>=3?'Ehtiyatlı istifadəçi':'Hələ təcrübəsiz';z.innerHTML=`<div class="big">${sc} / ${Q.length}: ${r}</div><p>Şübhəli mesajda dayan, göndərəni yoxla və linkə basma.</p><button class="btn" id="rs">Yenidən oyna</button>`;$('rs').onclick=()=>{qi=0;sc=0;rq()};return}
+const q=Q[qi];z.innerHTML=`<small>Mesaj ${qi+1} / ${Q.length}</small><div class="msg"><small>${q.t} · Kimdən: ${q.f}</small>${q.b}</div><div class="gen"><button class="btn" data-a="1">Fişinq</button><button class="btn alt" data-a="0">Təhlükəsiz</button></div><div id="fb"></div>`;
+z.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{const ok=(+b.dataset.a)===q.p;if(ok)sc++;z.querySelectorAll('[data-a]').forEach(x=>x.disabled=true);$('fb').innerHTML=`<div class="fb ${ok?'ok':'no'}"><b>${ok?'Düzgün!':'Səhv.'}</b> ${q.e}</div><button class="btn" id="nx">${qi==Q.length-1?'Nəticəyə bax':'Növbəti'}</button>`;$('nx').onclick=()=>{qi++;rq()}})}
+rq();
+// Şifrələmə
+const cs=(s,k)=>s.replace(/[a-z]/gi,c=>{const b=c<'a'?65:97;return String.fromCharCode((c.charCodeAt(0)-b+k+26)%26+b)});
+const b64e=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s)));
+const b64d=s=>new TextDecoder().decode(Uint8Array.from(atob(s),c=>c.charCodeAt(0)));
+const mode=()=>$('md').value;
+function ui(){const m=mode();$('shw').style.display=m=='c'?'block':'none';$('de').style.display=m=='h'?'none':'inline-block';$('en').textContent=m=='h'?'Hash hesabla':'Şifrələ'}
+$('md').onchange=ui;ui();
+$('sf').oninput=e=>$('sfv').textContent=e.target.value;
+$('en').onclick=async()=>{const t=$('tx').value,m=mode();if(!t){$('to').textContent='Əvvəlcə mətn yaz.';return}
+if(m=='c')$('to').textContent=cs(t,+$('sf').value);else if(m=='b')$('to').textContent=b64e(t);
+else{const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));$('to').textContent=[...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('')}};
+$('de').onclick=()=>{const t=$('tx').value,m=mode();try{$('to').textContent=m=='c'?cs(t,-+$('sf').value):b64d(t)}catch(e){$('to').textContent='Bu mətn Base64 formatında deyil.'}};
+// Link yoxlayıcısı
+function lk(){const raw=$('lu').value.trim();if(!raw){$('lr').innerHTML='<div class="fb no">Əvvəlcə link yaz.</div>';return}
+const typed=/^[a-z]+:\/\//i.test(raw);let u;try{u=new URL(typed?raw:'http://'+raw)}catch(e){$('lr').innerHTML='<div class="fb no">Bu düzgün link deyil.</div>';return}
+const h=u.hostname,f=[];
+if(typed&&u.protocol==='http:')f.push('HTTPS yoxdur: məlumat şifrəsiz ötürülür.');
+if(/^\d+\.\d+\.\d+\.\d+$/.test(h))f.push('Domen əvəzinə IP ünvanı işlədilib.');
+if(u.username)f.push('Linkdə @ işarəsi var: əsl ünvan @-dən sonrakı hissədir.');
+if(h.split('.').length>4)f.push('Həddindən artıq alt-domen var.');
+if(h.includes('xn--'))f.push('Punycode: oxşar görünən saxta hərflər ola bilər.');
+if(/\.(xyz|top|click|zip|work|tk|gq|ml)$/.test(h))f.push('Fişinqdə tez-tez işlənən domen sonluğu.');
+if(/^(bit\.ly|tinyurl\.com|t\.co|goo\.gl|cutt\.ly|is\.gd)$/.test(h))f.push('Qısaldılmış link: haraya apardığı bəlli deyil.');
+if(/(login|secure|verify|update|confirm)/i.test(h))f.push('Domen adında login, secure, verify kimi inandırıcı sözlər var.');
+if((h.match(/-/g)||[]).length>=2)f.push('Domendə çoxlu tire var.');
+$('lr').innerHTML=f.length?`<div class="fb no"><b>${f.length} şübhəli əlamət:</b></div>`+f.map(x=>`<div class="fb no">${x}</div>`).join(''):'<div class="fb ok"><b>Açıq əlamət tapılmadı.</b> Bu linkin təhlükəsiz olduğunu sübut etmir, göndərənə də bax.</div>'}
+$('lb').onclick=lk;$('lu').onkeydown=e=>{if(e.key==='Enter')lk()};
+</script>
+</body>
+</html>
